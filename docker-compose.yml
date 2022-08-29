@@ -1,0 +1,33 @@
+version: "3.7"
+services:
+  frontend:
+    stdin_open: true
+    container_name: survey_frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./frontend:/app"
+      - "node_modules:/app/node_modules"
+    networks:
+      undabot-net:
+  json-server:
+    image: vimagick/json-server
+    container_name: survey_json_server
+    command: -H 0.0.0.0 -p 8080 -w db.json -r routes.json
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/data
+    networks:
+      undabot-net:
+    depends_on:
+      - frontend
+    restart: always
+volumes:
+  node_modules:
+  data:
+networks:
+  undabot-net:

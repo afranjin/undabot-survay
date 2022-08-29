@@ -1,0 +1,5 @@
+.editorconfig
+.git/
+Dockerfile*
+docker-compose*
+frontend/node_modules/
