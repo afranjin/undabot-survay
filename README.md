@@ -5,7 +5,6 @@
 Docker setup:
 - react as `frontend`
 - json-server as `mock data`
-- bulma as `css framework`
 
 ### Setting up development environment
 
