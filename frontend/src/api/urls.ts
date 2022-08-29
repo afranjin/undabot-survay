@@ -1,5 +1,5 @@
 const SurvayUrls = {
-    survay: 'api/v1/survey/'
+    survay: 'api/v1/survey/'  
   }
   
   const Urls = {
