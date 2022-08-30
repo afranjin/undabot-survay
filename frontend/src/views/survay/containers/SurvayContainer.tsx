@@ -31,7 +31,7 @@ const SurvayContainer = (props: Props): JSX.Element => {
         console.log(survay)
         const _ansvers = {...answer, survay: survay}
         createSurvayAnswer(survay.id, _ansvers).then(() => {
-            _navigate('/survay/answers')
+            _navigate('/answers')
         })
     }
 

@@ -8,7 +8,7 @@ const SurvayRoutes = (): JSX.Element => {
   return (
     <Routes>
       <Route path='/survay' element={<SurvayContainer/>} />
-      <Route path='/survay/answers' element={<SurvayAnswersContainer/>} />
+      <Route path='/answers' element={<SurvayAnswersContainer/>} />
     </Routes>
   )
 }
