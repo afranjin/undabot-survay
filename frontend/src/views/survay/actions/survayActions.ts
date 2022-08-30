@@ -1,9 +1,10 @@
-import { SurvayApi } from './../../../api/survayApi';
+import { SurvayApi } from './../../../api/survayApi'
 import * as constants from './constants'
 import { ActionCreator } from 'redux'
 import { ThunkAction, ThunkDispatch } from 'redux-thunk'
 import { SurvayState } from '../reducers'
 import { ISurvay, ISurvayAnswer } from '../../../types/survay'
+import { toastMsg } from '../../../components/Toast/toastMsg'
 
 
 export type SurvayThunkResult<R> = ThunkAction<Promise<R>, SurvayState, null, SurvayActions>
@@ -32,7 +33,7 @@ export interface SurvayHasErrored {
 export const survayHasErrored = (hasErrored: boolean, error: Error, action?: string): SurvayHasErrored => {
     if (action) {
         const errorMsg = error.message
-        console.log(errorMsg)
+        toastMsg(errorMsg, action, 'error')
     }
     return {
         type: constants.SURVAY_HAS_ERRORED,
@@ -80,6 +81,7 @@ export const createSurvayAnswer: ActionCreator<SurvayThunkResult<ISurvayAnswer>>
 }
 
 export const createAnswerSuccess = (survayAnswer: ISurvayAnswer): CreateAnswerSuccess => {
+    toastMsg(`Survay answers successfully created.`, constants.CREATE_SURVAY_ANSWER_SUCCESS, 'success')
     return {
         type: constants.CREATE_SURVAY_ANSWER_SUCCESS,
         survayAnswer
