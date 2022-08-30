@@ -6,15 +6,16 @@ import { faFilm } from '@fortawesome/free-solid-svg-icons'
 import { Rating } from '@smastrom/react-rating';
 
 
-
 interface Props {
     survay: ISurvay
+    createSurvayAnswer: (survayAnswer: ISurvayAnswer) => void
   }
   
 const SurvayFormComponent = (props: Props): JSX.Element => {
-    const {survay} = props
-    const [answers, setAnswers] = useState<ISurvayAnswer>({id: -1, survay: survay, answerMovie: '', answerRate: 1})
+    const {survay, createSurvayAnswer} = props
+    const [answers, setAnswers] = useState<ISurvayAnswer>({id: '', survay: {...survay}, answerMovie: '', answerRate: 1})
 
+    // Change depend of the key
     const inputChange = (event: React.ChangeEvent<HTMLInputElement> | number, key: string) => {
         setAnswers(prev => {
           return {
@@ -22,7 +23,11 @@ const SurvayFormComponent = (props: Props): JSX.Element => {
             [key]: typeof(event) !== 'number' ? event.target.value : event
           }
         })
-      }
+    }
+    
+    const saveAnswer = () => {
+        createSurvayAnswer(answers)
+    }
 
     const renderFormField = (): JSX.Element => {
         return (
@@ -33,7 +38,7 @@ const SurvayFormComponent = (props: Props): JSX.Element => {
                             <Form.Field key={i} className='field'>
                                 <Form.Label className='label'>{v.label}</Form.Label>
                                 <Form.Control>
-                                    <Form.Input required={true} type='text' placeholder='Type Film Name' onChange={e => inputChange(e, 'answerMovie')}/>
+                                    <Form.Input required={true} type='text' placeholder='Enter Film Name' onChange={e => inputChange(e, 'answerMovie')}/>
                                     <Icon align='left' color='primary'>
                                         <FontAwesomeIcon icon={faFilm}/>
                                     </Icon>
@@ -60,7 +65,7 @@ const SurvayFormComponent = (props: Props): JSX.Element => {
         <Block>
             {renderFormField()}
             <Block >
-                <Button disabled={answers.answerMovie.length === 0} className='is-primary mt-5'>Rate Film</Button>
+                <Button disabled={answers.answerMovie.length === 0} className='is-primary mt-5' onClick={saveAnswer}>Rate Film</Button>
             </Block>
         </Block>
     )
