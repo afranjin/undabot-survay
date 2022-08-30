@@ -6,7 +6,7 @@ import SurvayContainer from '../views/survay/containers/SurvayContainer'
 const SurvayRoutes = (): JSX.Element => {
   return (
     <Routes>
-      <Route path='/survay' element={<SurvayContainer/>} />
+      <Route path='/survay' element={<SurvayContainer/>}/>
     </Routes>
   )
 }
