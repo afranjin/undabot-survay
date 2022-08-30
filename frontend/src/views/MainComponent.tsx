@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
+import { Columns, Hero, Image } from 'react-bulma-components';
 import { useNavigate, useLocation } from 'react-router';
 import SurvayRoutes from './SurvayRoutes';
-
+import cinema from '../assets/cinema.jpg'
 
 
 const MainComponent = (): JSX.Element => {
@@ -15,11 +16,14 @@ const MainComponent = (): JSX.Element => {
   }, [_location, _navigate])
 
   return (
-    <section className='hero is-fullheight has-background-white-ter'>
-      <div className='hero-body has-text-centered'>
-        <SurvayRoutes/>
-      </div>
-    </section>
+    <Columns.Column className='p-0 is-mobile'>
+      <Hero className='is-fullheight has-background-white-ter'>
+          <Image className='App-backgound' src={cinema}/>
+          <Hero.Body className='has-text-centered'>
+            <SurvayRoutes/>
+          </Hero.Body>
+      </Hero>
+    </Columns.Column>
   )
 }
 
