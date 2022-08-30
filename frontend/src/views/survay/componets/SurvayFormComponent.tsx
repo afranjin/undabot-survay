@@ -1,5 +1,11 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
+import { Block, Button, Form, Icon, Tag } from 'react-bulma-components';
 import { ISurvay, ISurvayAnswer } from "../../../types/survay";
+import { faFilm } from '@fortawesome/free-solid-svg-icons'
+import { Rating } from '@smastrom/react-rating';
+
+
 
 interface Props {
     survay: ISurvay
@@ -7,47 +13,57 @@ interface Props {
   
 const SurvayFormComponent = (props: Props): JSX.Element => {
     const {survay} = props
-    const [answers, setAnswers] = useState<ISurvayAnswer>({id: -1, survay: survay, answerMovie: '', answerRate: 2})
+    const [answers, setAnswers] = useState<ISurvayAnswer>({id: -1, survay: survay, answerMovie: '', answerRate: 1})
 
-    const confirmRate = (): void => {
-        console.log('sve')
-    }
+    const inputChange = (event: React.ChangeEvent<HTMLInputElement> | number, key: string) => {
+        setAnswers(prev => {
+          return {
+            ...prev,
+            [key]: typeof(event) !== 'number' ? event.target.value : event
+          }
+        })
+      }
 
     const renderFormField = (): JSX.Element => {
         return (
-            <form>
+            <div>
                 {survay.questions.map((v, i) => {
                     if (v.name === 'film') {
                         return (
-                            <div key={i} className='field'>
-                                <label className='label'>{v.label}</label>
-                                <div className='control'>
-                                    <input className='input' type='text'/>
-                                </div>
-                            </div>
+                            <Form.Field key={i} className='field'>
+                                <Form.Label className='label'>{v.label}</Form.Label>
+                                <Form.Control>
+                                    <Form.Input type='text' onChange={e => inputChange(e, 'answerMovie')}/>
+                                    <Icon align='left' color='primary'>
+                                        <FontAwesomeIcon icon={faFilm}/>
+                                    </Icon>
+                                </Form.Control>
+                            </Form.Field>
                         )
                     }
                     return (
-                        <div key={i} className='field'>
-                            <label className='label'>{v.label}</label>
-                            <div className='control'>
-                                <span className='tag is-info is-light'>{answers.answerRate}</span>
-                                <input style={{width: '50%'}} className='slider is-success is-medium' step='1' min='1' max='5' type='range'/>
-                            </div>
-                        </div>
+                        <Form.Field key={i}>
+                            <Form.Label>{v.label}</Form.Label>
+                            <Form.Control className='is-justify-content-center'>
+
+                                <Tag.Group className='has-addons is-justify-content-center'>
+                                    <Rating style={{ maxWidth: 200 }} value={answers.answerRate} onChange={(e) => inputChange(e, 'answerRate')}/>
+                                </Tag.Group>
+                            </Form.Control>
+                        </Form.Field>
                     )
                 })}
-            </form>
+            </div>
         )
     }
     
     return (
-        <div className='block'>
+        <Block>
             {renderFormField()}
-            <div className='block'>
-                <button className='button is-primary'>Rate {answers.answerRate}</button>
-            </div>
-        </div>
+            <Block >
+                <Button disabled={answers.answerMovie.length === 0} className='is-primary mt-5'>Rate Film</Button>
+            </Block>
+        </Block>
     )
 }
   
