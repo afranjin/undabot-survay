@@ -5,15 +5,17 @@ import App from '../src/app/App'
 import reportWebVitals from './reportWebVitals'
 import 'bulma/css/bulma.min.css';
 import '@smastrom/react-rating/style.css';
+import { Provider } from 'react-redux'
+import createStore from './store/configureStore'
 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  <Provider store={createStore()}>
     <App />
-  </React.StrictMode>
+  </Provider>,
 );
 
 // If you want to start measuring performance in your app, pass a function
