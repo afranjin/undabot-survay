@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Block, Box, Columns, Container } from 'react-bulma-components'
 import { connect } from 'react-redux'
-import { SurvayApi } from '../../../api/survayApi'
 import { RootState } from '../../../store/rootState'
 import { ISurvay } from '../../../types/survay'
 import * as SurvayActions from '../actions/survayActions'

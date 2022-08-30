@@ -33,7 +33,7 @@ const SurvayFormComponent = (props: Props): JSX.Element => {
                             <Form.Field key={i} className='field'>
                                 <Form.Label className='label'>{v.label}</Form.Label>
                                 <Form.Control>
-                                    <Form.Input type='text' onChange={e => inputChange(e, 'answerMovie')}/>
+                                    <Form.Input required={true} type='text' placeholder='Type Film Name' onChange={e => inputChange(e, 'answerMovie')}/>
                                     <Icon align='left' color='primary'>
                                         <FontAwesomeIcon icon={faFilm}/>
                                     </Icon>
@@ -45,7 +45,6 @@ const SurvayFormComponent = (props: Props): JSX.Element => {
                         <Form.Field key={i}>
                             <Form.Label>{v.label}</Form.Label>
                             <Form.Control className='is-justify-content-center'>
-
                                 <Tag.Group className='has-addons is-justify-content-center'>
                                     <Rating style={{ maxWidth: 200 }} value={answers.answerRate} onChange={(e) => inputChange(e, 'answerRate')}/>
                                 </Tag.Group>
