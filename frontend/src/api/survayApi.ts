@@ -7,7 +7,12 @@ export const SurvayApi = {
     return HttpClient.get<ISurvay, Record<string, string>>(Urls.SurvayUrls.survay, queryParams)
   },
 
-  createAnswersSurvay(answer: ISurvayAnswer): Promise<ISurvayAnswer> {
-    return HttpClient.post<ISurvayAnswer, ISurvayAnswer>(`${Urls.SurvayUrls.survay}${answer.survay.id}/answers/`, answer)
+  createAnswersSurvay(survayId: number | string, answer: ISurvayAnswer): Promise<ISurvayAnswer> {
+    console.log(answer)
+    return HttpClient.post<ISurvayAnswer, ISurvayAnswer>(`${Urls.SurvayUrls.survay}${survayId}/answers/`, answer)
+  },
+
+  getSurvayAnswers(survayId: string | number, queryParams?: Record<string, string>): Promise<ISurvayAnswer[]> {
+    return HttpClient.get<ISurvayAnswer[], Record<string, string>>(`${Urls.SurvayUrls.survay}${survayId}/answers/`, queryParams)
   }
 }
