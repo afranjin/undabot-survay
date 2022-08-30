@@ -1,15 +1,15 @@
 
 export interface ISurvayQuestion {
-    id: number
+    id: number | string
     name: string
-    survayId: number
+    survayId: number | string
     label: string
     required: boolean
     type: string
 }
 
 export interface ISurvay {
-    id: number
+    id: number | string
     film_festival: string
     title: string
     desscription_thanks: string
@@ -18,7 +18,7 @@ export interface ISurvay {
 }
 
 export interface ISurvayAnswer {
-    id: number
+    id: number | string
     survay: ISurvay
     answerMovie: string
     answerRate: number
