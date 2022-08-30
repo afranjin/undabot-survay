@@ -1,8 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from '../src/app/App';
-import reportWebVitals from './reportWebVitals';
-import 'bulma/css/bulma.min.css'
+import React from 'react'
+import './index.css'
+import ReactDOM from 'react-dom/client'
+import App from '../src/app/App'
+import reportWebVitals from './reportWebVitals'
+import 'bulma/css/bulma.min.css';
+import '@smastrom/react-rating/style.css';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
