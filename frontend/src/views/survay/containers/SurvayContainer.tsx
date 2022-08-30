@@ -1,20 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import { Block, Box, Columns, Container } from 'react-bulma-components'
+import { connect } from 'react-redux'
 import { SurvayApi } from '../../../api/survayApi'
+import { RootState } from '../../../store/rootState'
 import { ISurvay } from '../../../types/survay'
+import * as SurvayActions from '../actions/survayActions'
 import SurvayFormComponent from '../componets/SurvayFormComponent'
 
+interface StateProps {
+    survay: ISurvay
+  }
+  
+  interface DispatchProps {
+    getSurvay: () => Promise<ISurvay>
+  }
+  
+  type Props = StateProps & DispatchProps
 
-const SurvayContainer = (): JSX.Element => {
-    const [survay, setSurvay] = useState<ISurvay>({} as ISurvay)
+
+const SurvayContainer = (props: Props): JSX.Element => {
+    const {survay, getSurvay} = props
+
+    //const [survay, setSurvay] = useState<ISurvay>({} as ISurvay)
 
     useEffect(() => {
-        SurvayApi.getSurvay().then((response) => {
-            if (response) {
-                setSurvay(response)
-            }
-        })
-    }, [setSurvay])
+        getSurvay()
+    }, [getSurvay])
 
     return (
         <React.Fragment>
@@ -39,4 +50,18 @@ const SurvayContainer = (): JSX.Element => {
     )
 }
 
-export default SurvayContainer
+const mapStateToProps = (state: RootState): StateProps => {
+    return {
+      survay: state.survayState.survay
+    }
+}
+  
+const mapDispatchToProps = (
+dispatch: SurvayActions.SurvayThunkDispatchType): DispatchProps => {
+    return {
+        getSurvay: () => dispatch(SurvayActions.getSurvay()),
+    }
+}
+  
+export default connect(mapStateToProps, mapDispatchToProps)(SurvayContainer)
+
