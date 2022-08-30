@@ -14,10 +14,10 @@ const initialSurvay: ISurvay = {
 
 export const survay = (state: ISurvay = initialSurvay, action: SurvayActions): ISurvay => {
     switch(action.type) {
-      case constants.GET_SURVAY_SUCCESS:
-        return action.survay;
-  
-      default:
-        return state;
+        case constants.GET_SURVAY_SUCCESS:
+            return action.survay;
+    
+        default:
+            return state;
     }
-  }
+}
