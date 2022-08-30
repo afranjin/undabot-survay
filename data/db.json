@@ -2,7 +2,7 @@
   "survay": [
     {
       "id": 1,
-      "film_festival": "Tunjo Film Festival",
+      "film_festival": "Undabot Film Festival",
       "title": "Film feedback",
       "desscription_thanks": "Thank you for participating in the film festival!",
       "desscription_record": "Please fill out this short survey so we can record your feedback."
@@ -26,5 +26,6 @@
       "type": "rating"
     }
   ],
-  "answers": []
+  "answers": [
+  ]
 }
