@@ -14,14 +14,12 @@ const MainComponent = (): JSX.Element => {
     }
   }, [_location, _navigate])
 
-
   return (
-    <section className="hero is-fullheight has-background-white-ter">
-      <div className="hero-body has-text-centered">
+    <section className='hero is-fullheight has-background-white-ter'>
+      <div className='hero-body has-text-centered'>
         <SurvayRoutes/>
       </div>
     </section>
-
   )
 }
 
