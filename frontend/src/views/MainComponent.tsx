@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
-import { Columns, Hero, Image } from 'react-bulma-components';
+import { Columns, Hero } from 'react-bulma-components';
 import { useNavigate, useLocation } from 'react-router';
 import SurvayRoutes from './SurvayRoutes';
-import cinema from '../assets/cinema.jpg'
 
 
 const MainComponent = (): JSX.Element => {
@@ -17,8 +16,7 @@ const MainComponent = (): JSX.Element => {
 
   return (
     <Columns.Column className='p-0 is-mobile'>
-      <Hero className='is-fullheight has-background-white-ter'>
-          <Image className='App-backgound' src={cinema}/>
+      <Hero className='is-success is-fullheight'>
           <Hero.Body className='has-text-centered'>
             <SurvayRoutes/>
           </Hero.Body>

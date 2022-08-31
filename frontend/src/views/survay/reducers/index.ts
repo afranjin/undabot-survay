@@ -10,8 +10,8 @@ export interface SurvayState {
 }
 
 const survayApp = combineReducers<SurvayState>({
-    survay,
-    survayAnswers
+  survay,
+  survayAnswers
 })
 
 export default survayApp

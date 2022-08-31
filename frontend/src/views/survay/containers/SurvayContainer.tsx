@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Block, Box, Columns, Container } from 'react-bulma-components'
+import { Block, Box, Columns } from 'react-bulma-components'
 import { connect } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { RootState } from '../../../store/rootState'
@@ -27,8 +27,6 @@ const SurvayContainer = (props: Props): JSX.Element => {
     }, [getSurvay])
 
     const handleCreateSurvayAnswer = (answer: ISurvayAnswer): void => {
-        console.log(answer)
-        console.log(survay)
         const _ansvers = {...answer, survay: survay}
         createSurvayAnswer(survay.id, _ansvers).then(() => {
             _navigate('/answers')
@@ -38,23 +36,24 @@ const SurvayContainer = (props: Props): JSX.Element => {
     return (
         <React.Fragment>
             {survay && survay.questions ? 
-                <Container>
-                    <Columns.Column className="is-half is-offset-one-quarter">
+                <Columns.Column className='is-full'>
+                    <Block className='title is-1 has-text-centered has-text-weight-semibold'>
+                        {survay.film_festival}
+                    </Block>
+                    <Block className='subtitle is-3 has-text-weight-light has-text-centered padding-top pt-4'>
+                        {survay.desscription_thanks}
+                    </Block>
+                    <Block className='subtitle is-3 has-text-weight-light has-text-centered'>
+                        {survay.desscription_record}
+                    </Block>
+                    <Columns.Column className="is-three-fifths is-offset-one-fifth">
                         <Box>
-                            <Block className='title is-4 has-text-centered has-text-weight-semibold'>
-                                {survay.film_festival}
-                            </Block>
-                            <Block className='subtitle is-6 has-text-weight-light has-text-centered padding-top pt-4'>
-                                {survay.desscription_thanks}
-                            </Block>
-                            <Block className='subtitle is-6 has-text-weight-light has-text-centered'>
-                                {survay.desscription_record}
-                            </Block>
                             <SurvayFormComponent survay={survay} createSurvayAnswer={handleCreateSurvayAnswer}/>
                         </Box>
                     </Columns.Column>
-                </Container> : null}
-        </React.Fragment>
+                </Columns.Column>
+                : null}
+            </React.Fragment>
     )
 }
 
