@@ -1,6 +1,6 @@
-import { ISurvay } from "../../../types/survay";
+import { ISurvay } from '../../../types/survay'
 import * as constants from '../actions/constants'
-import { SurvayActions } from "../actions/survayActions";
+import { SurvayActions } from '../actions/survayActions'
 
 
 const initialSurvay: ISurvay = {

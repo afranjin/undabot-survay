@@ -8,7 +8,6 @@ export const SurvayApi = {
   },
 
   createAnswersSurvay(survayId: number | string, answer: ISurvayAnswer): Promise<ISurvayAnswer> {
-    console.log(answer)
     return HttpClient.post<ISurvayAnswer, ISurvayAnswer>(`${Urls.SurvayUrls.survay}${survayId}/answers/`, answer)
   },
 

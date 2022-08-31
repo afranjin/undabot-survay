@@ -1,4 +1,3 @@
-
 export interface ISurvayQuestion {
     id: number | string
     name: string

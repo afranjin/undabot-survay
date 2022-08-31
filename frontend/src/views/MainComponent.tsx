@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { Columns, Hero } from 'react-bulma-components';
-import { useNavigate, useLocation } from 'react-router';
-import SurvayRoutes from './SurvayRoutes';
+import { Columns, Hero } from 'react-bulma-components'
+import { useNavigate, useLocation } from 'react-router'
+import SurvayRoutes from './SurvayRoutes'
 
 
 const MainComponent = (): JSX.Element => {

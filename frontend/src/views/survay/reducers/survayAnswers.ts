@@ -1,6 +1,6 @@
-import { ISurvayAnswer } from "../../../types/survay";
+import { ISurvayAnswer } from '../../../types/survay'
 import * as constants from '../actions/constants'
-import { SurvayActions } from "../actions/survayActions";
+import { SurvayActions } from '../actions/survayActions'
 
 
 export const survayAnswers = (state: ISurvayAnswer[] = [], action: SurvayActions): ISurvayAnswer[] => {

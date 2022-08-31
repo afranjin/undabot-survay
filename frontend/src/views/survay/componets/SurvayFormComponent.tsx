@@ -1,10 +1,10 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
-import { Block, Button, Columns, Form, Icon, Tag } from 'react-bulma-components';
-import { ISurvay, ISurvayAnswer } from "../../../types/survay";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useState } from 'react'
+import { Block, Button, Columns, Form, Icon, Tag } from 'react-bulma-components'
+import { ISurvay, ISurvayAnswer } from "../../../types/survay"
 import { faFilm } from '@fortawesome/free-solid-svg-icons'
-import { Rating } from '@smastrom/react-rating';
-import { useNavigate } from 'react-router';
+import { Rating } from '@smastrom/react-rating'
+import { useNavigate } from 'react-router'
 
 
 interface Props {

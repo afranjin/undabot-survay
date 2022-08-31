@@ -39,9 +39,9 @@ const SurvayAnswersContainer = (props: Props): JSX.Element => {
                     <Columns.Column className="is-half is-offset-one-quarter">
                         <Box>
                             <Table.Container className='table-container'>
-                                <Table className='is-bordered is-striped is-narrow is-hoverable is-fullwidth'>
+                                <Table className='is-bordered is-striped is-narrow is-hoverable is-fullwidth is-vcentered"'>
                                     <thead className='is-success'>
-                                        <tr >
+                                        <tr className='is-vcentered'>
                                             <th className='title is-size-4 has-text-centered has-text-black-ter'>Movie</th> 
                                             <th className='title is-size-4 has-text-centered has-text-black-ter'>Rating</th>
                                         </tr>
@@ -49,8 +49,8 @@ const SurvayAnswersContainer = (props: Props): JSX.Element => {
                                     <tbody>
                                         {survayAnswers.map((v, i) => {
                                             return (
-                                                <tr className={`${i === 0 ? "is-selected has-background-info" : ""}`} key={i}>
-                                                    <td>{v.answerMovie}</td> 
+                                                <tr className={`${i === 0 ? "is-selected" : ""}`} key={i}>
+                                                    <td style={{verticalAlign: 'middle'}}>{v.answerMovie}</td> 
                                                     <td className='is-justify-content-center'>
                                                     <div style={{ maxWidth: 'fit-content', width: '100%' }}>
                                                         <Rating readOnly value={v.answerRate}/>

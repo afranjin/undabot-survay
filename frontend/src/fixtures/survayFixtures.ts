@@ -1,4 +1,4 @@
-import { ISurvayQuestion, ISurvayAnswer } from './../types/survay';
+import { ISurvayQuestion, ISurvayAnswer } from './../types/survay'
 import { ISurvay } from '../types/survay'
 
 
