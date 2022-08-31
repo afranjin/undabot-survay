@@ -4,27 +4,27 @@ import { Block, Box, Button, Columns, Table } from 'react-bulma-components'
 import { connect } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { RootState } from '../../../store/rootState'
-import { ISurvayAnswer } from '../../../types/survay'
+import { ISurvay, ISurvayAnswer } from '../../../types/survay'
 import * as SurvayActions from '../actions/survayActions'
 
 interface StateProps {
     survayAnswers: ISurvayAnswer[]
+    survay: ISurvay
   }
   
-  interface DispatchProps {
-    getSurvayAnswers: () => Promise<ISurvayAnswer[]>
-  }
+interface DispatchProps {
+    getSurvayAnswers: (survayId: number | string) => Promise<ISurvayAnswer[]>
+}
   
 type Props = StateProps & DispatchProps
 
-
 const SurvayAnswersContainer = (props: Props): JSX.Element => {
-    const {survayAnswers, getSurvayAnswers} = props
+    const {survayAnswers, getSurvayAnswers, survay} = props
     const _navigate = useNavigate()
 
     useEffect(() => {
-        getSurvayAnswers()
-    }, [getSurvayAnswers])
+        getSurvayAnswers(survay.id)
+    }, [getSurvayAnswers, survay])
 
     const handleGoBack = () => {
         _navigate('/survay')
@@ -74,14 +74,15 @@ const SurvayAnswersContainer = (props: Props): JSX.Element => {
 
 const mapStateToProps = (state: RootState): StateProps => {
     return {
-      survayAnswers: state.survayState.survayAnswers
+      survayAnswers: state.survayState.survayAnswers,
+      survay: state.survayState.survay
     }
 }
   
 const mapDispatchToProps = (
 dispatch: SurvayActions.SurvayThunkDispatchType): DispatchProps => {
     return {
-        getSurvayAnswers: () => dispatch(SurvayActions.getSurvayAnswers())
+        getSurvayAnswers: (survayId) => dispatch(SurvayActions.getSurvayAnswers(survayId))
     }
 }
   
