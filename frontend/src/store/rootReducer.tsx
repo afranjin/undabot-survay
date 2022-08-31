@@ -2,6 +2,7 @@ import { combineReducers, AnyAction, CombinedState } from 'redux'
 import { RootState } from './rootState'
 import survayApp from '../views/survay/reducers'
 
+
 const appReducer = combineReducers<RootState>({
   survayState: survayApp,
 })

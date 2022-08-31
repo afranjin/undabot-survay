@@ -4,19 +4,19 @@ import axios, { AxiosRequestConfig } from 'axios'
 const apiUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL
 // create axios instance with baseURL and predefined timeout
 const _axios = axios.create({
-  url: apiUrl,
-  baseURL: apiUrl,
-  timeout: 300000,
-  withCredentials: false,
+    url: apiUrl,
+    baseURL: apiUrl,
+    timeout: 300000,
+    withCredentials: false,
 })
 
 // defined methods in HttpClient
 interface HttpMethods {
-  get<R, P>(path: string, _params?: P | null): Promise<R>
-  post<R, B>(path: string, body: B): Promise<R>
-  put<R, B>(path: string, id: string | number | null | undefined, body: B): Promise<R>
-  patch<R, B>(path: string, id: string | number | null, body: B): Promise<R>
-  delete<R, B>(path: string, id: string | number | null, body?: B | undefined): Promise<R>
+    get<R, P>(path: string, _params?: P | null): Promise<R>
+    post<R, B>(path: string, body: B): Promise<R>
+    put<R, B>(path: string, id: string | number | null | undefined, body: B): Promise<R>
+    patch<R, B>(path: string, id: string | number | null, body: B): Promise<R>
+    delete<R, B>(path: string, id: string | number | null, body?: B | undefined): Promise<R>
 }
 
 // exporting an object literal to keep KISS(Keep it simple, stupid) principle and avoid singletone boilerplate
@@ -26,7 +26,6 @@ export const HttpClient: HttpMethods = {
         const request: AxiosRequestConfig = {
         params: _params,
         withCredentials: false}
-        console.log(apiUrl)
         return _axios.get<R>(path, request)
             .then((response) => {
                 return response.data as R

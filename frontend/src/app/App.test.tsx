@@ -1,7 +1,14 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import React from 'react'
+import App from './App'
+import ReactDOM, { render } from 'react-dom';
+import { Provider } from 'react-redux'
+import createStore from '../store/configureStore'
 
-test('renders learn react link', () => {
-  render(<App />);
-});
+it('renders without crashing', () => {
+  const div = document.createElement('div')
+  render(
+    <Provider store={createStore()}>
+      <App />
+    </Provider>, div)
+  ReactDOM.unmountComponentAtNode(div)
+})
