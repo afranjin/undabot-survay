@@ -1,4 +1,4 @@
 {
     "/api/v1/survey": "/survay/1?_embed=questions",
-    "/api/v1/survey/:id/answers": "/answers"
+    "/api/v1/survey/:id/answers": "/answers?_sort=id&_order=desc"
   }
